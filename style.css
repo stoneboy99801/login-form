@@ -1,26 +1,167 @@
-*{
+:root {
+    --small: 3px;
+    --medium: 7px;
+}
+
+* {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
     font-family: "Josefin Sans", sans-serif;
 }
-section{
+
+body {
+    position: relative;
+    height: 100%;
+}
+header{
+    width: 100%;
+height: 150px;
+top: 0;
+position: sticky; 
+}
+.logo img {
+    margin: 30px;
+    width: 100px;
+    filter: drop-shadow(10px 10px 20px black);
+   position: sticky;
+}
+
+/* 🌨 Snowfall fixed */
+.snowfall {
+    position: absolute;
+    z-index: -1;
+    inset: 0;
+    overflow: hidden;
+    background: linear-gradient(#1090d0, #2612aa 85%);
+}
+
+.snowflake {
+    --small: 3px;
+    --medium: 7px;
+    width: var(--small);
+    height: var(--small);
+    position: absolute;
+    top: -10%;
+    left: 50%;
+    background-color: #fff;
+    border-radius: 50%;
+    opacity: 0.95;
+    pointer-events: none;
+    animation: snow 10s linear infinite, wind 4.5s ease-in-out infinite;
+}
+
+.snowflake:nth-child(2n) {
+    width: var(--medium);
+    height: var(--medium);
+}
+
+/* Spread flakes across screen */
+.snowflake:nth-child(1) {
+    left: 5%;
+    animation: snow 9s linear infinite, wind 4s ease-in-out infinite;
+    animation-delay: 0s, 0s;
+}
+
+.snowflake:nth-child(2) {
+    left: 12%;
+    animation: snow 11s linear infinite, wind 5s ease-in-out infinite;
+    animation-delay: 1s, 0.6s;
+}
+
+.snowflake:nth-child(3) {
+    left: 22%;
+    animation: snow 8.5s linear infinite, wind 3.8s ease-in-out infinite;
+    animation-delay: 2s, 0.3s;
+}
+
+.snowflake:nth-child(4) {
+    left: 30%;
+    animation: snow 12s linear infinite, wind 6s ease-in-out infinite;
+    animation-delay: 0.5s, 0.7s;
+}
+
+.snowflake:nth-child(5) {
+    left: 40%;
+    animation: snow 9.6s linear infinite, wind 4.2s ease-in-out infinite;
+    animation-delay: 0.8s, 0.2s;
+}
+
+.snowflake:nth-child(6) {
+    left: 52%;
+    animation: snow 10.5s linear infinite, wind 5s ease-in-out infinite;
+    animation-delay: 1.2s, 0.9s;
+}
+
+.snowflake:nth-child(7) {
+    left: 62%;
+    animation: snow 7.8s linear infinite, wind 3.5s ease-in-out infinite;
+    animation-delay: 0.4s, 0.4s;
+}
+
+.snowflake:nth-child(8) {
+    left: 72%;
+    animation: snow 13s linear infinite, wind 6.5s ease-in-out infinite;
+    animation-delay: 1.6s, 1s;
+}
+
+.snowflake:nth-child(9) {
+    left: 82%;
+    animation: snow 9.2s linear infinite, wind 4.4s ease-in-out infinite;
+    animation-delay: 0.2s, 0.6s;
+}
+
+.snowflake:nth-child(10) {
+    left: 90%;
+    animation: snow 11.3s linear infinite, wind 5.2s ease-in-out infinite;
+    animation-delay: 1s, 0.8s;
+}
+
+/* Vertical fall */
+@keyframes snow {
+    0% {
+        top: -10%;
+        opacity: 1;
+    }
+
+    100% {
+        top: 110%;
+        opacity: 0.75;
+    }
+}
+
+/* Left-right sway */
+@keyframes wind {
+    0% {
+        transform: translateX(-25px);
+    }
+
+    50% {
+        transform: translateX(25px);
+    }
+
+    100% {
+        transform: translateX(-25px);
+    }
+}
+
+/* Rest of your code same */
+section {
     width: 100%;
     height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    background: url(pexels-steve-12583203.jpg) no-repeat;
-    background-size: cover;
-    background-position: center;
     animation: animateBg 5s linear infinite;
 }
-@keyframes animateBg{
-    100%{
-        filter:hue-rotate(360deg);
+
+@keyframes animateBg {
+    100% {
+        filter: hue-rotate(360deg);
     }
 }
-.login-box{
+
+.login-box {
     border: 2px solid rgba(225, 225, 225, .5);
     position: relative;
     width: 400px;
@@ -32,18 +173,21 @@ section{
     border-radius: 10px;
     backdrop-filter: blur(15px);
 }
-h2{
+
+h2 {
     font-size: 2rem;
     color: white;
     text-align: center;
 }
-.input-box{
+
+.input-box {
     position: relative;
     width: 310px;
     margin: 30px 0;
     border-bottom: 2px solid #fff;
 }
-.input-box label{
+
+.input-box label {
     position: absolute;
     top: 50%;
     left: 5px;
@@ -53,12 +197,13 @@ h2{
     pointer-events: none;
     transition: .5s;
 }
-.input-box input:focus~label,
-.input-box input:valid~label{
-    top: -5px;
 
+.input-box input:focus~label,
+.input-box input:valid~label {
+    top: -5px;
 }
-.input-box input{
+
+.input-box input {
     width: 100%;
     height: 50px;
     background: transparent;
@@ -68,57 +213,66 @@ h2{
     color: #fff;
     padding: 0 35px 0 5px;
 }
-.input-box .icon{
+
+.input-box .icon {
     position: absolute;
     right: 8px;
     color: #fff;
     font-size: 1.2em;
     line-height: 57px;
+}
 
+.remember-password {
+    margin: -15px 0 15px;
+    font-size: .9em;
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
 }
-.remember-password{
-  margin: -15px 0 15px;
-  font-size: .9em;
-  color: #fff;
-  display: flex;
-  justify-content: space-between;
-}
-.remember-password label input{
+
+.remember-password label input {
     margin-right: 5px;
 }
-.remember-password a{
+
+.remember-password a {
     text-decoration: none;
     color: #fff;
 }
-.remember-password a:hover{
+
+.remember-password a:hover {
     text-decoration: underline;
 }
-.btn{
-   width: 100%;
-   height: 40px;
-   border-radius: 40px;
-   border: none; 
-   outline: none;
-   cursor: pointer;
-   font-size: 1em;
-   font-weight: 500;
+
+.btn {
+    width: 100%;
+    height: 40px;
+    border-radius: 40px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    font-size: 1em;
+    font-weight: 500;
 }
-.register-acc{
+
+.register-acc {
     font-size: .9em;
     color: #fff;
     text-align: center;
     margin: 25px 0 10px;
 }
-.register-acc a{
+
+.register-acc a {
     color: #fff;
     text-decoration: none;
     font-weight: 600px;
 }
-.register-acc a:hover{
+
+.register-acc a:hover {
     text-decoration: underline;
 }
+
 @media (max-width:360px) {
-    .login-box{
+    .login-box {
         width: 100%;
         height: 100vh;
         border: none;
